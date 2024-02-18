@@ -1,0 +1,135 @@
+
+sig4.c
+
+/*
+*  Parent process sends a signal to child process using kill()
+*/
+#include <signal.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
+int main(){
+   pid_t cpid = fork();
+   if (cpid ==0){
+      for(;;){
+         printf("I am child in an infinite loop\n");
+         sleep(1);
+      }
+   }
+   else{
+      sleep(5);
+      kill(cpid,SIGSEGV);
+      printf("I have killed my child... Bye\n");
+      exit(0);
+   }
+}
+
+
+
+
+
+
+The code you provided demonstrates a parent process sending a SIGSEGV (Segmentation Fault) signal to a child process using the `kill` function. 
+
+1. `#include <signal.h>`, `#include <stdio.h>`, `#include <stdlib.h>`, and `#include <unistd.h>`: These are the necessary header files for signal handling, I/O operations, process management, and sleeping.
+
+2. `pid_t cpid = fork();`: This line forks a child process from the parent process, and the child process starts executing the code immediately following the fork.
+
+3. Inside the child process block (`if (cpid == 0)`):
+
+   - The child process enters an infinite loop using `for(;;)`.
+
+   - It prints messages indicating that it is in the child process and then enters an infinite loop with a sleep of 1 second between iterations. This loop continues indefinitely.
+
+4. Inside the parent process block (`else`):
+
+   - The parent process sleeps for 5 seconds using `sleep(5)` to allow the child process to start running.
+
+   - After 5 seconds, the parent process sends a SIGSEGV signal to the child process using `kill(cpid, SIGSEGV)`.
+
+   - It prints a message indicating that it has killed the child process.
+
+   - The parent process then exits gracefully with `exit(0)`.
+
+Here's what will happen when you run this program:
+
+1. The program starts, and the parent process forks a child process.
+
+2. The child process starts running and enters an infinite loop, printing messages every second.
+
+3. After 5 seconds, the parent process sends a SIGSEGV signal to the child process using `kill`.
+
+4. When the child process receives the SIGSEGV signal, it typically results in a segmentation fault and causes the child process to terminate abnormally.
+
+5. The parent process prints the "I have killed my child... Bye" message and exits gracefully.
+
+Please note that sending a SIGSEGV signal is typically used to trigger a segmentation fault and is not a recommended way to terminate a process. A process should be terminated gracefully using signals like SIGTERM or SIGINT, allowing it to clean up resources before exiting.
+
+
+
+
+sig5.c
+
+/*
+*  Use of alarm system call
+*/
+#include <signal.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h> 
+int main(){
+   int i = alarm(205);
+   printf("i contains: %d\n", i);
+   sleep(5);
+   int j = alarm(10);
+   printf("After alarm(10); j contains: %d\n", j);
+   sleep(100);
+   exit(0);
+}
+
+
+
+The code you provided demonstrates the use of the `alarm` system call in Unix. The `alarm` system call is used to set an alarm clock for a specified number of seconds, after which a SIGALRM signal is sent to the process. Here's a breakdown of what the code does:
+
+1. `#include <signal.h>`, `#include <stdio.h>`, `#include <stdlib.h>`, and `#include <unistd.h>`: These are the necessary header files for signal handling, I/O operations, process management, and sleeping.
+
+2. `int i = alarm(205);`: This line sets an alarm for 205 seconds using the `alarm` system call and assigns the previous alarm setting (if any) to the variable `i`. This means that the program will receive a SIGALRM signal after 205 seconds.
+
+3. `printf("i contains: %d\n", i);`: This line prints the value of `i`, which is the previous alarm setting. It will show the number of seconds remaining until the previous alarm, if any.
+
+4. `sleep(5);`: The program sleeps for 5 seconds using `sleep`.
+
+5. `int j = alarm(10);`: This line sets a new alarm for 10 seconds using the `alarm` system call and assigns the previous alarm setting (if any) to the variable `j`. This means that the program will receive a SIGALRM signal after 10 seconds, overriding the previous alarm setting.
+
+6. `printf("After alarm(10); j contains: %d\n", j);`: This line prints the value of `j`, which is the previous alarm setting after it has been overridden by the new alarm of 10 seconds.
+
+7. `sleep(100);`: The program sleeps for 100 seconds using `sleep`.
+
+8. `exit(0);`: The program exits gracefully.
+
+Here's what will happen when you run this program:
+
+1. The program starts, and the initial alarm is set for 205 seconds.
+
+2. It prints the value of `i`, which represents the previous alarm setting (if any) and shows the number of seconds remaining until the previous alarm, which is initially 205 seconds.
+
+3. The program sleeps for 5 seconds using `sleep`.
+
+4. After 5 seconds, it sets a new alarm for 10 seconds, overriding the previous alarm setting.
+
+5. It prints the value of `j`, which represents the previous alarm setting after being overridden, which is initially 205 seconds but changes to 10 seconds after setting the new alarm.
+
+6. The program sleeps for 100 seconds.
+
+7. After 10 seconds (due to the second alarm), the program will receive a SIGALRM signal, which can be caught and handled by registering a signal handler for SIGALRM if needed.
+
+8. Eventually, the program exits gracefully.
+
+This code demonstrates how to set and modify alarms using the `alarm` system call and handle SIGALRM signals if necessary.
+
+
+
+
+
+
+

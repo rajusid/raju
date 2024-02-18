@@ -1,0 +1,10 @@
+14:37:36 **** Build of configuration Debug for project 05_button_external_led_blink ****
+make -j8 all 
+arm-none-eabi-size   05_button_external_led_blink.elf 
+   text	   data	    bss	    dec	    hex	filename
+    924	     12	   1572	   2508	    9cc	05_button_external_led_blink.elf
+Finished building: default.size.stdout
+ 
+
+14:37:37 Build Finished. 0 errors, 0 warnings. (took 680ms)
+

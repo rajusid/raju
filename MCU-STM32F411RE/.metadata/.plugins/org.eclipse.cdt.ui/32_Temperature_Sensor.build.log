@@ -1,0 +1,31 @@
+14:37:44 **** Build of configuration Debug for project 32_Temperature_Sensor ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F411xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'AHT25_SendCommand':
+../Core/Src/main.c:97:9: warning: implicit declaration of function 'HAL_I2C_Master_Transmit' [-Wimplicit-function-declaration]
+   97 |         HAL_I2C_Master_Transmit(&hi2c1, AHT25_ADDRESS, &txData, sizeof(txData), HAL_MAX_DELAY);
+      |         ^~~~~~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c:97:34: error: 'hi2c1' undeclared (first use in this function)
+   97 |         HAL_I2C_Master_Transmit(&hi2c1, AHT25_ADDRESS, &txData, sizeof(txData), HAL_MAX_DELAY);
+      |                                  ^~~~~
+../Core/Src/main.c:97:34: note: each undeclared identifier is reported only once for each function it appears in
+../Core/Src/main.c:100:9: warning: implicit declaration of function 'HAL_I2C_Master_Receive' [-Wimplicit-function-declaration]
+  100 |         HAL_I2C_Master_Receive(&hi2c1, AHT25_ADDRESS, NULL, 0, HAL_MAX_DELAY);
+      |         ^~~~~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c: At top level:
+../Core/Src/main.c:102:5: warning: data definition has no type or storage class
+  102 |     I2C_Stop();
+      |     ^~~~~~~~
+../Core/Src/main.c:102:5: warning: type defaults to 'int' in declaration of 'I2C_Stop' [-Wimplicit-int]
+../Core/Src/main.c:102:5: error: conflicting types for 'I2C_Stop'
+../Core/Src/main.c:77:6: note: previous definition of 'I2C_Stop' was here
+   77 | void I2C_Stop(void) {
+      |      ^~~~~~~~
+../Core/Src/main.c:103:1: error: expected identifier or '(' before '}' token
+  103 | }
+      | ^
+make: *** [Core/Src/subdir.mk:34: Core/Src/main.o] Error 1
+"make -j8 all" terminated with exit code 2. Build might be incomplete.
+
+14:37:45 Build Failed. 4 errors, 4 warnings. (took 781ms)
+

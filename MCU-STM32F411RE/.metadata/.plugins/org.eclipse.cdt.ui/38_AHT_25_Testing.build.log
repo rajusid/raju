@@ -1,0 +1,10 @@
+16:57:26 **** Incremental Build of configuration Debug for project 38_AHT_25_Testing ****
+make -j8 all 
+arm-none-eabi-size   38_AHT_25_Testing.elf 
+   text	   data	    bss	    dec	    hex	filename
+  20468	    476	   1684	  22628	   5864	38_AHT_25_Testing.elf
+Finished building: default.size.stdout
+ 
+
+16:57:27 Build Finished. 0 errors, 0 warnings. (took 683ms)
+

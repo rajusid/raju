@@ -1,0 +1,10 @@
+10:15:22 **** Incremental Build of configuration Debug for project 35_UART_6_FLOATING ****
+make -j8 all 
+arm-none-eabi-size   35_UART_6_FLOATING.elf 
+   text	   data	    bss	    dec	    hex	filename
+  16788	    476	   1588	  18852	   49a4	35_UART_6_FLOATING.elf
+Finished building: default.size.stdout
+ 
+
+10:15:22 Build Finished. 0 errors, 0 warnings. (took 621ms)
+

@@ -1,0 +1,4 @@
+main.c:10:6:UART_Init	1
+main.c:29:6:UART_TransmitString	3
+main.c:41:6:UART_TransmitFloat	1
+main.c:52:5:main	2

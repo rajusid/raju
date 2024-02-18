@@ -1,0 +1,10 @@
+14:21:44 **** Incremental Build of configuration Debug for project 35_Uart_floating_values ****
+make -j8 all 
+arm-none-eabi-size   35_Uart_floating_values.elf 
+   text	   data	    bss	    dec	    hex	filename
+  16796	    476	   1596	  18868	   49b4	35_Uart_floating_values.elf
+Finished building: default.size.stdout
+ 
+
+14:21:44 Build Finished. 0 errors, 0 warnings. (took 678ms)
+

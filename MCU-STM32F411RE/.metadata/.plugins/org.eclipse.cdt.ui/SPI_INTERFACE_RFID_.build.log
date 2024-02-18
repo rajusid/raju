@@ -1,0 +1,22 @@
+14:37:53 **** Build of configuration Debug for project SPI_INTERFACE_RFID_ ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F411xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c:9:8: error: unknown type name 'LCD_HandleTypeDef'
+    9 | extern LCD_HandleTypeDef hlcd;
+      |        ^~~~~~~~~~~~~~~~~
+../Core/Src/main.c: In function 'lcd_display_float':
+../Core/Src/main.c:19:3: warning: implicit declaration of function 'HAL_LCD_Clear' [-Wimplicit-function-declaration]
+   19 |   HAL_LCD_Clear(&hlcd);
+      |   ^~~~~~~~~~~~~
+../Core/Src/main.c:22:3: warning: implicit declaration of function 'HAL_LCD_Write' [-Wimplicit-function-declaration]
+   22 |   HAL_LCD_Write(&hlcd, LCD_COLUMN_COUNT, buffer);
+      |   ^~~~~~~~~~~~~
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:31:3: warning: implicit declaration of function 'HAL_LCD_DisplayOn' [-Wimplicit-function-declaration]
+   31 |   HAL_LCD_DisplayOn(&hlcd);
+      |   ^~~~~~~~~~~~~~~~~
+make: *** [Core/Src/subdir.mk:37: Core/Src/main.o] Error 1
+"make -j8 all" terminated with exit code 2. Build might be incomplete.
+
+14:37:53 Build Failed. 2 errors, 3 warnings. (took 794ms)
+

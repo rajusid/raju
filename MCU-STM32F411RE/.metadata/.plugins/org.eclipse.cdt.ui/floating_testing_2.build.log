@@ -1,0 +1,10 @@
+15:30:23 **** Incremental Build of configuration Debug for project floating_testing_2 ****
+make -j8 all 
+arm-none-eabi-size   floating_testing_2.elf 
+   text	   data	    bss	    dec	    hex	filename
+  24292	    484	   1596	  26372	   6704	floating_testing_2.elf
+Finished building: default.size.stdout
+ 
+
+15:30:24 Build Finished. 0 errors, 0 warnings. (took 723ms)
+

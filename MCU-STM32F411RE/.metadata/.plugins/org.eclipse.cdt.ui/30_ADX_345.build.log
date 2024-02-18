@@ -1,0 +1,10 @@
+14:37:43 **** Build of configuration Debug for project 30_ADX_345 ****
+make -j8 all 
+arm-none-eabi-size   30_ADX_345.elf 
+   text	   data	    bss	    dec	    hex	filename
+  16596	    120	   1784	  18500	   4844	30_ADX_345.elf
+Finished building: default.size.stdout
+ 
+
+14:37:44 Build Finished. 0 errors, 0 warnings. (took 678ms)
+
